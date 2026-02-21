@@ -1,0 +1,195 @@
+.message {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  animation: fadeIn 0.3s ease;
+}
+
+.message.user {
+  background-color: var(--user-message-bg);
+}
+
+.message.assistant {
+  background-color: var(--assistant-message-bg);
+}
+
+.message-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.message.user .message-avatar {
+  background-color: var(--bg-tertiary);
+}
+
+.message-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.message-role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.message-content {
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.message-content p {
+  margin-bottom: 0.75rem;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.message-content ul,
+.message-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.message-content li {
+  margin-bottom: 0.25rem;
+}
+
+.message-content code {
+  background-color: var(--tool-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.875em;
+  font-family: 'Courier New', monospace;
+}
+
+.message-content pre {
+  background-color: var(--tool-bg);
+  border: 1px solid var(--tool-border);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 0.75rem;
+}
+
+.message-content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Tool Calls Section */
+.tool-calls-section {
+  margin-top: 1rem;
+  background-color: var(--tool-bg);
+  border: 1px solid var(--tool-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tool-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--tool-bg);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid var(--tool-border);
+}
+
+.tool-toggle:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.tool-toggle span {
+  flex: 1;
+  text-align: left;
+}
+
+.tool-calls-list {
+  animation: fadeIn 0.2s ease;
+}
+
+.tool-call-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--tool-border);
+}
+
+.tool-call-item:last-child {
+  border-bottom: none;
+}
+
+.tool-call-header {
+  margin-bottom: 0.75rem;
+}
+
+.tool-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  font-family: 'Courier New', monospace;
+}
+
+.tool-section {
+  margin-top: 0.75rem;
+}
+
+.tool-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.tool-code {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  font-family: 'Courier New', monospace;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.tool-result {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+}
