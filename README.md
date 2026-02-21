@@ -12,15 +12,62 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Prerequisites](#-prerequisites)
+- [Features](#-features)
 - [Architecture](#-architecture)
 - [Tech Stack](#-tech-stack)
 - [Installation](#-installation)
+- [Running the Application](#️-running-the-application)
 
 ---
 
 ## 🎯 Overview
 
 Wearables Assistant is a conversational AI application that helps users query and analyze their wearable device data through natural language.
+
+---
+
+## ✅ Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+| Software | Minimum Version | Recommended | Download |
+|----------|----------------|-------------|----------|
+| Python | 3.9+ | 3.11+ | [python.org](https://www.python.org/downloads/) |
+| Node.js | 16.x+ | 20.x LTS | [nodejs.org](https://nodejs.org/) |
+| npm | 8.x+ | 10.x+ | Included with Node.js |
+| Git | 2.x+ | Latest | [git-scm.com](https://git-scm.com/) |
+
+**Additional Requirements:**
+- GROQ API Key (for LLM access) - Get it from [console.groq.com](https://console.groq.com)
+- Terminal/Command Line access
+- Code editor (VS Code recommended)
+
+---
+
+## ✨ Features
+
+### Core Functionality
+- 🤖 **AI-Powered Chat Interface** - Natural language queries for wearable data
+- 📊 **Multi-Channel Support** - Organize conversations by topics
+- 🔄 **Real-time Updates** - Live chat responses with streaming support
+- 📈 **Data Visualization** - View agent workflow graphs
+
+### Wearables Data Queries
+- 👣 **Daily Steps Tracking** - Get step counts for specific dates or ranges
+- 😴 **Sleep Analysis** - Total sleep, deep sleep, REM sleep, and sleep scores
+- ❤️ **Heart Rate Monitoring** - Resting, average, max, and min heart rates
+- 🏃 **Activity History** - Workout tracking with activity type filtering
+- 📅 **Weekly Summaries** - Comprehensive weekly health reports
+- 🔍 **Date Range Search** - Query data across custom date ranges
+- 📱 **Device Information** - View connected wearable device details
+
+### Technical Features
+- 🎯 **LangGraph Agent** - Intelligent query routing and tool selection
+- 🧠 **Groq LLM Integration** - Powered by Llama 3.3 70B model
+- 💾 **SQLite Database** - Persistent chat and channel storage
+- 🔌 **RESTful API** - Clean FastAPI backend architecture
+- ⚡ **Fast Development** - Hot reload for both frontend and backend
 
 ---
 
@@ -105,7 +152,12 @@ source venv/bin/activate  # macOS/Linux
 venv\Scripts\activate  # Windows
 ```
 
-2. Start the FastAPI server:
+2. Install dependencies (first time only):
+```bash
+pip install -r requirements.txt
+```
+
+3. Start the FastAPI server:
 ```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
