@@ -1,124 +1,245 @@
-# Wearables Assistant - Microservices Architecture
+# Wearables Assistant# Wearables Assistant - Microservices Architecture
 
-> A modern full-stack application for querying wearables data using AI, built with FastAPI, React, and LangGraph.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+
+> AI-powered conversational assistant for querying wearables data using LangGraph, FastAPI, and React.> A modern full-stack application for querying wearables data using AI, built with FastAPI, React, and LangGraph.
+
+
+
+![Application Interface](./image.png)![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green.svg)
-![React](https://img.shields.io/badge/React-18.2-blue.svg)
+
+## 📖 Overview![React](https://img.shields.io/badge/React-18.2-blue.svg)
+
 ![LangGraph](https://img.shields.io/badge/LangGraph-0.2-purple.svg)
+
+A full-stack application that allows users to query their wearable device data (steps, heart rate, sleep, activities) through natural language conversations. Built with a microservices architecture using LangGraph for intelligent agent workflows.
 
 ## � Screenshot
 
+## 🛠️ Tech Stack
+
 ![Application Interface](./image.png)
 
-## �📋 Table of Contents
+### Backend
 
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
+- **FastAPI** - Web framework## �📋 Table of Contents
+
+- **LangGraph** - Agent workflow engine
+
+- **LangChain** - LLM framework- [Overview](#overview)
+
+- **Groq** - LLM provider (Llama 3.3)- [Architecture](#architecture)
+
+- **SQLite** - Database- [Features](#features)
+
+- **Uvicorn** - ASGI server- [Tech Stack](#tech-stack)
+
 - [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Running the Application](#running-the-application)
-- [API Documentation](#api-documentation)
-- [Frontend Guide](#frontend-guide)
-- [Development](#development)
+
+### Frontend- [Installation](#installation)
+
+- **React** - UI framework- [Configuration](#configuration)
+
+- **Vite** - Build tool- [Running the Application](#running-the-application)
+
+- **Axios** - HTTP client- [API Documentation](#api-documentation)
+
+- **React Markdown** - Markdown rendering- [Frontend Guide](#frontend-guide)
+
+- **Mermaid** - Graph visualization- [Development](#development)
+
 - [Deployment](#deployment)
-- [Troubleshooting](#troubleshooting)
+
+## 🚀 Quick Start- [Troubleshooting](#troubleshooting)
+
 - [Contributing](#contributing)
 
----
+### Prerequisites
 
-## 🎯 Overview
+- Python 3.10+---
 
-Wearables Assistant is a conversational AI application that helps users query and analyze their wearable device data through natural language. The application uses a microservices architecture with a FastAPI backend and React frontend, powered by LangGraph for intelligent agent workflows.
+- Node.js 18+
 
-### Key Capabilities
+- Groq API Key (free at [console.groq.com](https://console.groq.com))## 🎯 Overview
 
-- 📊 **Natural Language Queries**: Ask questions in plain English
-- 🤖 **Intelligent Agent**: LangGraph-powered workflow with tool calling
-- 📈 **Comprehensive Data**: Steps, heart rate, sleep, activities, and more
+
+
+### InstallationWearables Assistant is a conversational AI application that helps users query and analyze their wearable device data through natural language. The application uses a microservices architecture with a FastAPI backend and React frontend, powered by LangGraph for intelligent agent workflows.
+
+
+
+1. **Clone and setup environment**### Key Capabilities
+
+```bash
+
+# Create .env file in root directory- 📊 **Natural Language Queries**: Ask questions in plain English
+
+echo "GROQ_API_KEY=your_groq_api_key_here" > .env- 🤖 **Intelligent Agent**: LangGraph-powered workflow with tool calling
+
+```- 📈 **Comprehensive Data**: Steps, heart rate, sleep, activities, and more
+
 - 🎨 **ChatGPT-like UI**: Modern, responsive interface
-- 🔧 **Tool Transparency**: See exactly what tools are being called
-- 📱 **Channel Management**: Organize conversations by topic
-- 🌐 **Graph Visualization**: Understand the agent's decision process
 
----
+2. **Backend setup**- 🔧 **Tool Transparency**: See exactly what tools are being called
 
-## 🏗️ Architecture
+```bash- 📱 **Channel Management**: Organize conversations by topic
+
+cd backend- 🌐 **Graph Visualization**: Understand the agent's decision process
+
+python -m venv venv
+
+source venv/bin/activate  # On Windows: venv\Scripts\activate---
+
+pip install -r requirements.txt
+
+cd ..## 🏗️ Architecture
+
+```
 
 ### System Design
 
-```
-┌─────────────┐         ┌──────────────┐         ┌────────────────┐
+3. **Frontend setup**
+
+```bash```
+
+cd frontend┌─────────────┐         ┌──────────────┐         ┌────────────────┐
+
+npm install│             │         │              │         │                │
+
+cd ..│   React     │◄───────►│   FastAPI    │◄───────►│   LangGraph    │
+
+```│   Frontend  │   HTTP  │   Backend    │         │     Agent      │
+
 │             │         │              │         │                │
-│   React     │◄───────►│   FastAPI    │◄───────►│   LangGraph    │
-│   Frontend  │   HTTP  │   Backend    │         │     Agent      │
-│             │         │              │         │                │
-└─────────────┘         └──────────────┘         └────────────────┘
-                                │                         │
-                                │                         │
-                                ▼                         ▼
+
+4. **Initialize database**└─────────────┘         └──────────────┘         └────────────────┘
+
+```bash                                │                         │
+
+python database.py                                │                         │
+
+```                                ▼                         ▼
+
                         ┌──────────────┐         ┌────────────────┐
-                        │              │         │                │
+
+### Running the Application                        │              │         │                │
+
                         │   SQLite     │         │   Groq LLM     │
-                        │   Database   │         │   (Llama 3.3)  │
-                        │              │         │                │
-                        └──────────────┘         └────────────────┘
-```
 
-### Component Flow
+**Terminal 1 - Backend:**                        │   Database   │         │   (Llama 3.3)  │
 
-1. **User Interface (React)**
-   - Modern ChatGPT-like interface
-   - Real-time message updates
-   - Tool execution display
-   - Channel management
+```bash                        │              │         │                │
+
+cd backend                        └──────────────┘         └────────────────┘
+
+source venv/bin/activate```
+
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+```### Component Flow
+
+
+
+**Terminal 2 - Frontend:**1. **User Interface (React)**
+
+```bash   - Modern ChatGPT-like interface
+
+cd frontend   - Real-time message updates
+
+npm run dev   - Tool execution display
+
+```   - Channel management
+
    - Graph visualization sidebar
 
-2. **API Layer (FastAPI)**
-   - RESTful endpoints
-   - CORS-enabled
+### Access
+
+- **Frontend**: http://localhost:30002. **API Layer (FastAPI)**
+
+- **Backend API**: http://localhost:8000   - RESTful endpoints
+
+- **API Docs**: http://localhost:8000/api/v1/docs   - CORS-enabled
+
    - Request/response validation
-   - Error handling
+
+## 📝 Usage   - Error handling
+
    - OpenAPI documentation
 
-3. **Business Logic (Services)**
-   - Agent service (LangGraph management)
-   - Channel service (conversation management)
-   - Graph service (visualization)
+1. Open the application at http://localhost:3000
 
-4. **AI Agent (LangGraph)**
+2. Create a new channel or use the default channel3. **Business Logic (Services)**
+
+3. Ask questions in natural language:   - Agent service (LangGraph management)
+
+   - "How many steps did I take yesterday?"   - Channel service (conversation management)
+
+   - "Show me my sleep data for the last week"   - Graph service (visualization)
+
+   - "What was my average heart rate today?"
+
+   - "Show me all my running activities"4. **AI Agent (LangGraph)**
+
    - State machine workflow
-   - Tool selection and execution
+
+The AI agent will automatically select and execute the appropriate tools to answer your questions.   - Tool selection and execution
+
    - Conversation context management
 
+## 🏗️ Project Structure
+
 5. **Data Layer (SQLite)**
-   - User profiles
-   - Device information
-   - Health metrics
-   - Activity data
 
----
+```   - User profiles
 
-## ✨ Features
+assistant-wearables/   - Device information
 
-### 1. ChatGPT-like Interface
+├── backend/   - Health metrics
 
-- **Modern Design**: Dark theme, smooth animations
-- **Real-time Updates**: Instant message display
-- **Markdown Support**: Formatted responses
-- **Auto-scroll**: Always see latest messages
-- **Typing Indicators**: Visual feedback during processing
+│   ├── app/   - Activity data
 
-### 2. Channel Management
+│   │   ├── api/          # API endpoints (chat, channels, graph)
 
-- **Multiple Channels**: Organize conversations by topic
+│   │   ├── core/         # Configuration---
+
+│   │   ├── models/       # Pydantic schemas
+
+│   │   └── services/     # Business logic## ✨ Features
+
+│   └── requirements.txt
+
+├── frontend/### 1. ChatGPT-like Interface
+
+│   ├── src/
+
+│   │   ├── components/   # React components- **Modern Design**: Dark theme, smooth animations
+
+│   │   ├── hooks/        # Custom hooks- **Real-time Updates**: Instant message display
+
+│   │   └── services/     # API integration- **Markdown Support**: Formatted responses
+
+│   └── package.json- **Auto-scroll**: Always see latest messages
+
+├── agent.py              # LangGraph agent- **Typing Indicators**: Visual feedback during processing
+
+├── tools.py              # Database query tools
+
+├── database.py           # Database initialization### 2. Channel Management
+
+└── wearables.db         # SQLite database
+
+```- **Multiple Channels**: Organize conversations by topic
+
 - **Channel Creation**: Easy channel creation with custom names
-- **Channel Switching**: Quick navigation between channels
+
+## 📄 License- **Channel Switching**: Quick navigation between channels
+
 - **Message Counting**: See activity at a glance
-- **Channel Deletion**: Clean up unused channels
+
+MIT License- **Channel Deletion**: Clean up unused channels
+
 
 ### 3. Tool Execution Display
 
