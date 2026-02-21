@@ -93,3 +93,54 @@ GROQ_API_KEY=your_groq_api_key_here
 
 ---
 
+## ▶️ Running the Application
+
+### Running Backend
+
+1. Activate virtual environment:
+```bash
+cd backend
+source venv/bin/activate  # macOS/Linux
+# or
+venv\Scripts\activate  # Windows
+```
+
+2. Start the FastAPI server:
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+The backend will be available at: `http://localhost:8000`
+- API documentation: `http://localhost:8000/docs`
+- Alternative docs: `http://localhost:8000/redoc`
+
+### Running Frontend
+
+In a new terminal:
+
+```bash
+cd frontend
+npm run dev
+```
+
+The frontend will be available at: `http://localhost:5173`
+
+### Running Both Simultaneously
+
+For development, open two terminal windows:
+
+**Terminal 1 (Backend):**
+```bash
+cd backend
+source venv/bin/activate
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Terminal 2 (Frontend):**
+```bash
+cd frontend
+npm run dev
+```
+
+---
+
